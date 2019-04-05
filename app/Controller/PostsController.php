@@ -1,6 +1,7 @@
 <?php
     class PostsController extends AppController{
-
+       // var $uses = ['Post', 'User'];
+       // var $components = ['Auth', 'Sessions'];
         public function index(){
             $this->set('posts', $this->Post->find('all', [
                 'contain' => [
@@ -23,11 +24,26 @@
 
         }
         public function view($id){
+            $this->loadModel('Message');
             if(!$id){
                 return false;
             }
-            $post = $this->Post->findById($id);
-            
+
+            $findOptions = [
+                'contain'=>[
+                    'User',
+                    'Message'=>'User'
+                ],
+             //   'fields'=>[],
+                'connditions'=>[
+                    'Post.id'=>$id
+                ]
+            ];
+
+            $post = $this->Post->find('first', $findOptions);
+            //debug($post);
+
+            //die();
             $this->set('post', $post);
 
         }
