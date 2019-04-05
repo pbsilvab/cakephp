@@ -31,16 +31,16 @@
                     'User',
                     'Message'=>'User'
                 ],
-             //   'fields'=>[],
+                //'fields'=>['User.name'],
                 'connditions'=>[
                     'Post.id'=>$id
                 ]
             ];
 
             $post = $this->Post->find('first', $findOptions);
-            //debug($post);
+          //  debug($post);
 
-            //die();
+         //   die();
             $this->set('post', $post);
 
         }
