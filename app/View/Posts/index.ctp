@@ -1,7 +1,7 @@
 <div>
 <h2>Feed</h2>
 <?php 
-    debug($posts);
+  // debug($posts);
     echo $this->Html->link(
         'Agregar Post',
             [
@@ -25,8 +25,8 @@
             <tr>
                 <td> <?php echo $post['Post']['id']?></td>
                 <td> <?php echo $post['Post']['title']?></td>
+                <td> <?php echo $post['User']['name']?></td>
                 <td> <?php echo $post['Category']['name']?></td>
-                <td> <?php echo $post['Post']['user_id']?></td>
                 <td> 5</td>
                 <td> <?php echo $this->Html->link('Ver info', ['action'=>'view',  $post['Post']['id']] )?> </td>
             </tr>

@@ -4,7 +4,8 @@
         public function index(){
             $this->set('posts', $this->Post->find('all', [
                 'contain' => [
-                    'Category'
+                    'Category',
+                    'User'
                 ]
             ]));
         }
@@ -26,12 +27,21 @@
                 return false;
             }
             $post = $this->Post->findById($id);
-
+            
             $this->set('post', $post);
 
         }
         public function edit($id){
 
+        }
+        public function comment(){
+          //debug($this->request->data);
+           $save = $this->Post->Message->saveAssociated($this->request->data);
+
+            if($save){
+                return $this->redirect(array('action' => 'index'));
+            }
+            return false;
         }
 
 
