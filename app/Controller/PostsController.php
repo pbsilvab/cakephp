@@ -1,7 +1,6 @@
 <?php
     class PostsController extends AppController{
-       // var $uses = ['Post', 'User'];
-       // var $components = ['Auth', 'Sessions'];
+
         public function index(){
             $this->set('posts', $this->Post->find('all', [
                 'contain' => [
