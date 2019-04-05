@@ -19,8 +19,6 @@
                     return $this->redirect(array('action' => 'index'));
                 }
             }
-          
-
         }
         public function view($id){
             $this->loadModel('Message');
@@ -58,6 +56,4 @@
             }
             return false;
         }
-
-
     }
