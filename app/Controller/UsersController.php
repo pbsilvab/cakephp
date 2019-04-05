@@ -9,7 +9,7 @@ class UsersController extends AppController{
     public function beforeFilter() {
         parent::beforeFilter();
         // Allow users to register and logout.
-        $this->Auth->allow('add', 'login');
+        $this->Auth->allow('add', 'logout');
     }
     public function add() {
         if ($this->request->is('post')) {
@@ -27,7 +27,8 @@ class UsersController extends AppController{
     }
     public function login() {
         if ($this->request->is('post')) {
-
+            //debug($this->Auth->login());
+            //die();
             if ($this->Auth->login()) {
                 $this->Session->write('userId', $this->Auth->user('id'));
                 $this->Session->write('Correo', $this->Auth->user('email'));

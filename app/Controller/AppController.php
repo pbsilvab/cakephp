@@ -51,7 +51,7 @@ class AppController extends Controller {
                     'fields' => array('username' => 'email')
                 )
             ),
-            'authorize' => array('Controller') // Added this line
+          //  'authorize' => array('Posts.add') // Added this line
         )
     );
 
