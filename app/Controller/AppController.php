@@ -57,16 +57,64 @@ class AppController extends Controller {
 
 
     public function beforeFilter() {
-   //     $this->Auth->allow('index', 'view');
+        $role = 'guest';
+
+        if($this->Auth->user('id')){
+            $role = $this->Auth->user('role');
+        }
+        
+        if(!$this->isAuthorized($role)){
+            $this->dd("No tiene Acceso a este modulo");
+        };
+
     }
-    public function isAuthorized($user) {
-        // Admin can access every action
-      /*  if (isset($user['role']) && $user['role'] === 'admin') {
+    public function isAuthorized($role) {
+
+        $current_url = strtolower($this->here);
+       // $this->dd($current_url);
+        if ($role === 'admin'){
             return true;
-        }*/
-    
-        // Default deny
-      //  return false;
+        }
+
+        $permisos = $this->accessData($role);
+        //$this->dd(in_array($current_url, $permisos));
+        
+       if(in_array($current_url, $permisos)){
+            return true;
+       }else{
+            return false;
+       };
+         
     }
 
+    public function accessData($role){
+        $basics = [
+            '/cakephp/',
+            '/cakephp/users/login',
+            '/cakephp/users/logout',
+            '/cakephp/users/add',
+        ];
+
+        $accsessData = [
+            'author'=>[
+                '/cakephp/posts',
+                '/cakephp/posts/add',
+                '/cakephp/posts/view',
+                '/cakephp/posts/message',
+                '/cakephp/users',
+                '/cakephp/users/add'
+            ],
+            'guest'=>[
+                '/cakephp/posts/view',
+                '/cakephp/posts/index',
+                '/cakephp/posts/message',
+            ]
+        ];
+
+        return array_merge($accsessData[$role], $basics);
+    }
+    public function dd($values, $second = null){
+        debug($values, $second);
+        die();
+    }
 }

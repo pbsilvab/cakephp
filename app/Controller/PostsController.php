@@ -2,11 +2,14 @@
     class PostsController extends AppController{
 
         public function index(){
+         
             $this->set('posts', $this->Post->find('all', [
                 'contain' => [
                     'Category',
-                    'User'
-                ]
+                    'User',
+                    'Message'
+                ],
+                
             ]));
         }
         public function add(){
@@ -31,14 +34,13 @@
                     'User',
                     'Message'=>'User'
                 ],
-                //'fields'=>['User.name'],
-                'connditions'=>[
+                'conditions'=>[
                     'Post.id'=>$id
                 ]
             ];
 
             $post = $this->Post->find('first', $findOptions);
-          //  debug($post);
+            //$this->dd($post);
 
          //   die();
             $this->set('post', $post);
@@ -48,7 +50,6 @@
 
         }
         public function comment(){
-          //debug($this->request->data);
            $save = $this->Post->Message->saveAssociated($this->request->data);
 
             if($save){

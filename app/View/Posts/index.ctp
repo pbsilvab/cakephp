@@ -27,7 +27,7 @@
                 <td> <?php echo $post['Post']['title']?></td>
                 <td> <?php echo $post['User']['name']?></td>
                 <td> <?php echo $post['Category']['name']?></td>
-                <td> 5</td>
+                <td> <?php echo count($post['Message'])?></td>
                 <td> <?php echo $this->Html->link('Ver info', ['action'=>'view',  $post['Post']['id']] )?> </td>
             </tr>
         <?php } ?>
