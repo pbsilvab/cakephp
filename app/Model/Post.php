@@ -18,11 +18,11 @@ class Post extends AppModel{
     ];
     public $actsAs = [
             "Containable", 
-            'Json'=>[
-                'ToFromJson'=>[
+            'Data'=>[ //data format v1.0.1
+                'ToFromJson'=>[//parsin array into json
                     'data'
                 ],
-                'dateFormat'=>[
+                'dateFormat'=>[ //retrieving fields with d-m-Y format 
                     'created_at'
                 ],
                 'slugabble'=>[//field called 'slug' must exits in the DB

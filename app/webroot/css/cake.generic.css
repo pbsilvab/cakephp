@@ -22,14 +22,14 @@
 
 /** General Style Info **/
 body {
-	background: #003d4c;
+	background: #282828;
 	color: #fff;
 	font-family:'lucida grande',verdana,helvetica,arial,sans-serif;
 	font-size:90%;
 	margin: 0;
 }
 a {
-	color: #003d4c;
+	color: rgb(144, 64, 64);
 	text-decoration: underline;
 	font-weight: bold;
 }
@@ -51,7 +51,7 @@ h1 {
 }
 h2 {
 	background:#fff;
-	color: #e32;
+	color: #adc458;
 	font-family:'Gill Sans','lucida grande', helvetica, arial, sans-serif;
 	font-size: 190%;
 }
@@ -231,7 +231,7 @@ table td.actions a {
 }
 .paging .current {
 	background: #efefef;
-	color: #c73e14;
+	color: #adc458;
 }
 
 /** Scaffold View **/
@@ -740,4 +740,12 @@ pre {
 /** Elements **/
 #url-rewriting-warning {
 	display:none;
+}
+nav{
+	padding: 20px;
+}
+nav ul li {
+	display: inline-block;
+	text-decoration: none;
+	cursor: pointer;
 }

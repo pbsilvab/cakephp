@@ -1,6 +1,6 @@
 <?php
 
-    class JsonBehavior extends ModelBehavior  {
+    class DataBehavior extends ModelBehavior  {
         public $jsonfields = [];
         public $dateformat = [];
         public $slugabble = [];
