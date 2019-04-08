@@ -2,7 +2,7 @@
     class PostsController extends AppController{
 
         public function index(){
-            $this->dd( $this->Post->find('all') );
+          //  $this->dd( $this->Post->find('all') );
 
 
             $this->set('posts', $this->Post->find('all', [
