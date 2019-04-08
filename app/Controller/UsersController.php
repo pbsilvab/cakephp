@@ -27,8 +27,7 @@ class UsersController extends AppController{
     }
     public function login() {
         if ($this->request->is('post')) {
-            //debug($this->Auth->login());
-            //die();
+
             if ($this->Auth->login()) {
                 $this->Session->write('userId', $this->Auth->user('id'));
                 $this->Session->write('Correo', $this->Auth->user('email'));
@@ -42,7 +41,6 @@ class UsersController extends AppController{
     
     public function logout() {
         $this->Session->destroy();
-
         return $this->redirect($this->Auth->logout());
     }
     

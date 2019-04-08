@@ -25,6 +25,7 @@
 
                 $save = $this->Post->save($this->request->data);
                 if($save){
+                    $this->Post->getEventManager()->dispatch(new CakeEvent('Model.Post.add', $this));
                     return $this->redirect(array('action' => 'index'));
                 }
                 $this->Flash->error(

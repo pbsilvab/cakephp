@@ -3,6 +3,7 @@
     class JsonBehavior extends ModelBehavior  {
         public $jsonfields = [];
         public $dateformat = [];
+        public $slugabble = [];
 
         public function setup(Model $model, $settings = array()) {
 
@@ -12,6 +13,11 @@
             if(array_key_exists('dateFormat',$settings)){
                 $this->dateformat = $settings['dateFormat'];
             }
+            if(array_key_exists('slugabble',$settings)){
+                $this->slugabble = $settings['slugabble'];
+            }
+
+            
                 
         }
     
@@ -40,7 +46,10 @@
             for ($i=0; $i < count($this->jsonfields) ; $i++) { 
                 $model->data[$model->alias][$this->jsonfields[$i]] = $this->dataToJson( $model->data[$model->alias][$this->jsonfields[$i]]);
             }
-
+            for ($i=0; $i < count($this->slugabble) ; $i++) { 
+                $model->data[$model->alias]['slug'] = $this->textToSlug( $model->data[$model->alias][$this->slugabble[$i]]);
+            }
+            
             return true;
             
         }
@@ -60,6 +69,10 @@
         }
         public function dataFromJson($data){
             return (array) json_decode($data);
+        }
+        public function textToSlug($string){
+            $slug = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $string)));
+            return $slug;
         }
 
     }

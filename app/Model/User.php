@@ -1,6 +1,7 @@
 <?php
 App::uses('AppModel', 'Model');
 App::uses('BlowfishPasswordHasher', 'Controller/Component/Auth');
+App::uses('CakeEvent', 'Event');
 
 class User extends AppModel{
     public $name = 'users';

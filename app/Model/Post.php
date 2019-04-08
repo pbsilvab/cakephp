@@ -24,6 +24,9 @@ class Post extends AppModel{
                 ],
                 'dateFormat'=>[
                     'created_at'
+                ],
+                'slugabble'=>[//field called 'slug' must exits in the DB
+                    'title' //only one index is accepted
                 ]
             ]
         ];
