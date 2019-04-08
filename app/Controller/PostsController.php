@@ -2,7 +2,9 @@
     class PostsController extends AppController{
 
         public function index(){
-         
+            $this->dd( $this->Post->find('all') );
+
+
             $this->set('posts', $this->Post->find('all', [
                 'contain' => [
                     'Category',
@@ -17,6 +19,10 @@
             $this->set('categories', $this->Post->Category->find('list'));
 
             if ($this->request->is(array('post'))) {
+
+                
+                $this->request->data['Post']['data']= $this->dummyArray();
+
                 $save = $this->Post->save($this->request->data);
                 if($save){
                     return $this->redirect(array('action' => 'index'));
@@ -59,5 +65,16 @@
                 return $this->redirect(array('action' => 'index'));
             }
             return false;
+        }
+
+        public function dummyArray(){
+            return [
+                'apple' =>   1234,
+                'boy'   =>   2345,
+                'cat'   =>   3456,
+                'dog'   =>   4567,
+                'echo'  =>   5678,
+                'fortune' => 6789
+            ];
         }
     }
