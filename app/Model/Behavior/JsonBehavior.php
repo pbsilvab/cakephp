@@ -6,9 +6,10 @@
         public function setup(Model $model, $settings = array()) {
             if(array_key_exists('ToFromJson',$settings)){
                 $this->jsonfields = $settings['ToFromJson'];
+            }
+            if(array_key_exists('dateFormat',$settings)){
                 $this->dateformat = $settings['dateFormat'];
             }
-           
         }
     
         public function afterFind(Model $model, $results, $primary = false) {
@@ -34,7 +35,7 @@
         public function beforeSave(Model $model, $options = array()){
 
             for ($i=0; $i < count($this->jsonfields) ; $i++) { 
-                $model->data[$model->alias][$this->jsonfields[$i]] = $this->datatoJson( $model->data[$model->alias][$this->jsonfields[$i]]);
+                $model->data[$model->alias][$this->jsonfields[$i]] = $this->dataToJson( $model->data[$model->alias][$this->jsonfields[$i]]);
             }
 
             return true;
