@@ -20,8 +20,6 @@
                         );
                     }
                 }
-            }
-            foreach ($results as $key => $val) { //json formatting
                 for ($i=0; $i < count($this->jsonfields) ; $i++) { 
                     if (isset($val[$model->alias][$this->jsonfields[$i]])) {
                         $results[$key][$model->alias][$this->jsonfields[$i]] = $this->dataFromJson(
@@ -29,10 +27,7 @@
                         );
                     }
                 }
-            }
-
-            //foreach()
-
+            }            
             return $results;
         }
     
