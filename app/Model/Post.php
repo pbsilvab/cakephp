@@ -18,4 +18,26 @@ class Post extends AppModel{
     ];
     public $actsAs = ["Containable"];
 
+
+    public function beforeSave($options = array()) {
+        $titulo = $this->required($this->data['Post']['title']);
+        $content = $this->required($this->data['Post']['content']);
+
+        if ($titulo && $content) {
+            return true;
+        }
+        
+        return false;
+    }
+    
+    public function dateFormatBeforeSave($dateString) {
+        return date('Y-m-d', strtotime($dateString));
+    }
+
+    public function required($text){
+
+        return !empty($text)?true:false;
+
+    }
+
 }

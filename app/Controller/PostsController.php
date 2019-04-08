@@ -21,6 +21,9 @@
                 if($save){
                     return $this->redirect(array('action' => 'index'));
                 }
+                $this->Flash->error(
+                    'Campos incompletos'
+                );
             }
         }
         public function view($id){
