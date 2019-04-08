@@ -20,7 +20,6 @@
 
             if ($this->request->is(array('post'))) {
 
-                
                 $this->request->data['Post']['data']= $this->dummyArray();
 
                 $save = $this->Post->save($this->request->data);

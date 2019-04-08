@@ -13,6 +13,6 @@
                 'controller' => 'Categories',
                 'action' => 'index'
             ]
-	); 
-
+    );
+    
 ?>
