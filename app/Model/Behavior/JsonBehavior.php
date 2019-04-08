@@ -3,13 +3,16 @@
     class JsonBehavior extends ModelBehavior  {
         public $jsonfields = [];
         public $dateformat = [];
+
         public function setup(Model $model, $settings = array()) {
+
             if(array_key_exists('ToFromJson',$settings)){
                 $this->jsonfields = $settings['ToFromJson'];
             }
             if(array_key_exists('dateFormat',$settings)){
                 $this->dateformat = $settings['dateFormat'];
             }
+                
         }
     
         public function afterFind(Model $model, $results, $primary = false) {

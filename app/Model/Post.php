@@ -17,15 +17,15 @@ class Post extends AppModel{
         ]
     ];
     public $actsAs = [
-                        "Containable", 
-                        'Json'=>[
-                            'ToFromJson'=>[
-                                'data'
-                            ],
-                            'dateFormat'=>[
-                                'created_at'
-                            ]
-                        ]
-                    ];
+            "Containable", 
+            'Json'=>[
+                'ToFromJson'=>[
+                    'data'
+                ],
+                'dateFormat'=>[
+                    'created_at'
+                ]
+            ]
+        ];
 
 }
