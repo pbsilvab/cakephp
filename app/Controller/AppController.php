@@ -69,6 +69,7 @@ class AppController extends Controller {
 
     }
     public function isAuthorized($role) {
+        return true; //cambiar esto
 
         $current_url = strtolower($this->here);
        // $this->dd($current_url);

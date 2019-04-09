@@ -3,16 +3,24 @@
 
         public function index(){
           //  $this->dd( $this->Post->find('all') );
+            $posts = $this->Post->find('all', [
+                            'contain' => [
+                                'Category',
+                                'User',
+                                'Message'
+                            ],
+                            
+                        ]);
 
+            $this->set('posts', $posts );
 
-            $this->set('posts', $this->Post->find('all', [
-                'contain' => [
-                    'Category',
-                    'User',
-                    'Message'
-                ],
-                
-            ]));
+           // if($this->request->is('ajax')){
+              //  $this->dd('acceso');
+                $this->set(array(
+                    'post' => $posts,
+                    '_serialize' => array('post')
+                ));
+          //  }
         }
         public function add(){
             
@@ -53,6 +61,14 @@
 
          //   die();
             $this->set('post', $post);
+
+
+            if($this->request->is('ajax')){
+                $this->set(array(
+                    'post' => $post,
+                    '_serialize' => array('post')
+                ));
+            }
 
         }
         public function edit($id){

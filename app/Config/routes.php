@@ -20,6 +20,9 @@
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
  
+Router::mapResources('/',array('prefix'=>'/api/','controller'=>'Posts'));
+
+Router::parseExtensions();
 /**
  * Here, we are connecting '/' (base path) to controller called 'Pages',
  * its action called 'display', and we pass a param to select the view file
@@ -37,8 +40,13 @@
  */
 	CakePlugin::routes();
 
+
+
 /**
  * Load the CakePHP default routes. Only remove this if you do not want to use
  * the built-in default routes.
  */
 	require CAKE . 'Config' . DS . 'routes.php';
+
+
+
