@@ -14,13 +14,12 @@
 
             $this->set('posts', $posts );
 
-           // if($this->request->is('ajax')){
-              //  $this->dd('acceso');
-                $this->set(array(
-                    'post' => $posts,
-                    '_serialize' => array('post')
-                ));
-          //  }
+         
+            $this->set(array(
+                'post' => $posts,
+                '_serialize' => array('post')
+            ));
+        
         }
         public function add(){
             
