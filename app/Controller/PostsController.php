@@ -2,7 +2,7 @@
     class PostsController extends AppController{
 
         public function index(){
-          //  $this->dd( $this->Post->find('all') );
+
             $posts = $this->Post->find('all', [
                             'contain' => [
                                 'Category',
@@ -30,6 +30,7 @@
                 $this->request->data['Post']['data']= $this->dummyArray();
 
                 $save = $this->Post->save($this->request->data);
+
                 if($save){
                     $this->Post->getEventManager()->dispatch(new CakeEvent('Model.Post.add', $this));
                     return $this->redirect(array('action' => 'index'));
@@ -56,25 +57,23 @@
             ];
 
             $post = $this->Post->find('first', $findOptions);
-            //$this->dd($post);
-
-         //   die();
+            
             $this->set('post', $post);
 
 
-            if($this->request->is('ajax')){
+            //if($this->request->is('ajax')){
                 $this->set(array(
                     'post' => $post,
                     '_serialize' => array('post')
                 ));
-            }
+           // }
 
         }
         public function edit($id){
 
         }
         public function comment(){
-           $save = $this->Post->Message->saveAssociated($this->request->data);
+            $save = $this->Post->Message->saveAssociated($this->request->data);
 
             if($save){
                 return $this->redirect(array('action' => 'index'));
@@ -83,6 +82,7 @@
         }
 
         public function dummyArray(){
+
             return [
                 'apple' =>   1234,
                 'boy'   =>   2345,
@@ -91,5 +91,6 @@
                 'echo'  =>   5678,
                 'fortune' => 6789
             ];
+
         }
     }
